@@ -1,0 +1,14 @@
+
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
+export EMACS="/usr/bin/flatpak run org.gnu.emacs"
+ulimit -n 20480
+setxkbmap -option ctrl:nocaps
+ibus-daemon -x -d
+tmux new -s guake -d
+guake  -e "tmux a -t guake" &
+sxhkd -c ~/.config/sxhkd/${DESKTOP_SESSION}.sxhkdrc &
+$HOME/.fehbg
+~/bin/touchpadbutton off
+~/.config/dwm-bar/dwm_bar.sh &
